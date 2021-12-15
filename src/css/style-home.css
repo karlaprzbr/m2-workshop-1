@@ -1,0 +1,109 @@
+/* CSS HOMEPAGE */
+
+html body{
+    font-family: 'Lato', sans-serif;
+    background-color: #F8F9FA;
+}
+
+div.container.col-sm-12.container-1{
+    min-height: 250px;
+    padding: 2%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+h1.main-title-container{
+   font-family: 'LatoBold', sans-serif;
+   font-size: 32px;
+   padding-top: 20px;
+}
+
+h2.sub-title-container{
+    font-family: 'Lato', sans-serif;
+    font-size: 32px;
+}
+
+p.home-text{
+    font-size: 15px;
+}
+
+div.col-sm-12.cta-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a.cta-ancre{
+
+    padding:15px 30px;
+    margin: 20px;
+
+    background-color: #3366CC;
+    color: #fff;
+    font-size: 24px;
+    border-radius: 20px;
+    text-decoration: none;
+
+}
+
+a.cta-ancre:hover{
+    text-decoration: none;
+    cursor: pointer;
+    color:#fff;
+}
+
+.col-sm-12.container-2{
+    background-color: #3366CC;
+    color:#fff;
+    padding: 2%;
+}
+
+.container-3 .row,
+.container-4 .row{
+    justify-content: center;
+    align-items: center;
+}
+
+.container-img img{
+    display:block;
+    margin-left: auto;
+    margin-right:auto;
+}
+
+.container-text p{
+    font-size: 15px;
+}
+
+.container-3,
+.container-4{
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.container-3 h2,
+.container-4 h2{
+    font-family: 'LatoBold', sans-serif;
+}
+
+.container-5{
+    margin:0;
+    padding: 0;
+}
+
+.container-5 .img{
+    width: 100%;
+    height: auto;
+}
+
+.container-5 h2{
+    padding-bottom: 2%;
+}
+.container-5 p{
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.col-sm-12.container-6{
+    background-color: #FFF;
+}

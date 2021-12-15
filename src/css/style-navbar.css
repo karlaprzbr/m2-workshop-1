@@ -1,0 +1,57 @@
+/* FONT @ DEFAULT */
+@font-face {
+    font-family: 'LatoBold';
+    src: local('LatoBold'), url(../../assets/fonts/Lato/Lato-Bold.ttf) format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url(../../assets/fonts/Lato/Lato-Regular.ttf) format('truetype'); 
+}
+
+body{
+    font-family: "Lato", sans-serif;
+}
+
+h1{
+    font-family: "LatoBold", sans-serif;
+}
+  
+/*CSS NAVBAR */
+
+nav{
+    font-family: 'LatoBold', sans-serif;
+    font-size: 24px;
+}
+
+nav.navbar.navbar-light{
+    background-color: #fff;
+    filter:drop-shadow(0 4px 6px 0 rgba(0,0,0, 0,8));
+}
+
+nav .img-fluid{
+    width: 130px;
+    height: auto;
+    margin: 15px;
+}
+
+nav.navbar-light .navbar-nav .nav-link{
+    text-decoration: none;
+    color: #222222;
+}
+
+nav.navbar-light .navbar-nav .nav-link.active{
+    color:#3366CC;
+}
+
+nav.navbar-light .navbar-nav .nav-link:hover{
+    color: #3366CC;
+    transition: 0.3s;
+}
+
+nav.navbar-light .navbar-nav{
+    align-items: center;
+    justify-content: center;
+}
+
