@@ -15,9 +15,9 @@ const songs = ["agroalimentari", "anxova", "blau acer", "blau de París", "fuet"
 let songIndex = 0;
 loadSong(songs[songIndex]);
 
-function loadSong(audio) {
-    title.innerText = audio;
-    audio.src = `../assets/audios/Q203-cat-Catalan/Millars/${audio}.ogg`;
+function loadSong(song) {
+    title.innerText = song;
+    audio.src = `../assets/audios/Q203-cat-Catalan/Millars/${song}.ogg`;
 }
 
 playBtn.addEventListener('click', () => {
