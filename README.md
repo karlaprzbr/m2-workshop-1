@@ -1,1 +1,4 @@
-# m2-workshop-1
+# Workshop : Lingua Libre
+
+### Technologies utilisées :
+- JavaScript Vanilla
