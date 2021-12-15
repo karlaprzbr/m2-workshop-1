@@ -112,7 +112,7 @@ document.getElementById('export').addEventListener('click', function() {
 const createTagXml = (audioName, tagName) => {
     var tag = {
         'audio':audioName,
-        'type':tagName,
+        'type':tagName.replace('tag ',''),
         'date':new Date().toString()
     }
     tagsList.push(tag)
