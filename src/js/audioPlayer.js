@@ -1,9 +1,12 @@
 const musicContainer = document.getElementById('music-container');
+const musicContainerId = document.getElementById('music-container-id');
 const playBtn = document.getElementById('play');
+const playBtnIndiv = document.getElementsByClassName('btn-play');
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
 
 const audio = document.getElementById('audio');
+const players = document.getElementById('players');
 const progress = document.getElementById('progress');
 const progressContainer = document.getElementById('progress-container');
 const title = document.getElementById('title');
@@ -13,7 +16,7 @@ const durTime = document.querySelector('#durTime');
 const tags = document.getElementsByClassName('tag')
 const array = Object.values(tags)
 
-const songs = ["agroalimentari", "anxova", "blau acer", "blau de París", "fuet", "mantega", "nata", "orxata", "sobrassada", "te", "tòfona", "tomàquet"];
+const songs = ["agroalimentari", "anxova", "blau acer", "blau de París"/*, "fuet", "mantega", "nata", "orxata", "sobrassada", "te", "tòfona", "tomàquet"*/];
 
 let songIndex = 0;
 loadSong(songs[songIndex]);
@@ -26,6 +29,57 @@ function loadSong(song) {
     });
 }
 
+for (let i = 0; i < songs.length; i++) {
+    console.log(songs[i] + i);
+    createPlayers(songs[i], i);
+}
+
+function createPlayers(song, songIndex) {
+    const newPlayer = document.createElement('audio');
+    newPlayer.id = 'audio' + songIndex;
+    newPlayer.key = song;
+    newPlayer.src = `../assets/audios/Q203-cat-Catalan/Millars/${song}.ogg`;
+    newPlayer.controls = "controls";
+    loadSong(song);
+    players.appendChild(newPlayer);
+    newPlayer.insertAdjacentHTML('afterend',
+        '<div class="navigation"><button id="play' + songIndex + '" class="action-btn action-btn-big btn-play"><i class="fas fa-play"></i></button></div>');
+}
+
+//event listener for individual player
+
+for (let i = 0; i < playBtnIndiv.length; i++) {
+    const audioId = document.getElementById('audio' + i);
+    console.log(audioId)
+    playBtnIndiv[i].addEventListener('click', () => {
+        const isPlaying = musicContainerId.classList.contains('play');
+        if (isPlaying) {
+            musicContainerId.classList.remove('play');
+            playBtnIndiv[i].querySelector('i.fas').classList.add('fa-play');
+            playBtnIndiv[i].querySelector('i.fas').classList.remove('fa-pause');
+
+            audioId.pause();
+        } else {
+            musicContainerId.classList.add('play');
+            playBtnIndiv[i].querySelector('i.fas').classList.remove('fa-play');
+            playBtnIndiv[i].querySelector('i.fas').classList.add('fa-pause');
+
+            audioId.play();
+        }
+    })
+    audioId.addEventListener('ended', () => {
+        musicContainerId.classList.remove('play');
+        playBtnIndiv[i].querySelector('i.fas').classList.add('fa-play');
+        playBtnIndiv[i].querySelector('i.fas').classList.remove('fa-pause');
+    })
+
+    playBtnIndiv[i].addEventListener('dblclick', () =>{
+        
+    })
+}
+
+
+//Event listener for big player
 playBtn.addEventListener('click', () => {
     const isPlaying = musicContainer.classList.contains('play');
 
@@ -96,55 +150,59 @@ audio.addEventListener('timeupdate', updateProgress);
 progressContainer.addEventListener('click', setProgress);
 audio.addEventListener('ended', nextSong);
 
-// xml
+
+/**
+ * XML
+ * Gestion des tags et création du fichier xml
+ */
 var tagsList = []
 // const tags = document.getElementsByClassName('tag')
 // const array = Object.values(tags)
 array.forEach(tag => {
-    tag.addEventListener('click', function(event) {
+    tag.addEventListener('click', function (event) {
         createTagXml(tag.id, tag.className)
     })
 });
-document.getElementById('export').addEventListener('click', function() {
+document.getElementById('export').addEventListener('click', function () {
     const url = this.href
     exporter(url)
 })
 const createTagXml = (audioName, tagName) => {
     var tag = {
-        'audio':audioName,
-        'type':tagName.replace('tag ',''),
-        'date':new Date().toString()
+        'audio': audioName,
+        'type': tagName.replace('tag ', ''),
+        'date': new Date().toString()
     }
     tagsList.push(tag)
     jsonToXml(tagsList);
-  }
-  
-  const jsonToXml = (list) => {
+}
+
+const jsonToXml = (list) => {
     var xmlString = '<root></root>';
     var parser = new DOMParser();
     var xmlDoc = parser.parseFromString(xmlString, "text/xml");
     var root = xmlDoc.getElementsByTagName('root')[0];
     list.forEach(tag => {
-      var xmlTag = xmlDoc.createElement('tag')
-      var xmlType = xmlDoc.createElement('type')
-      var xmlAudio = xmlDoc.createElement('audio')
-      var xmlDate = xmlDoc.createElement('date')
-      xmlType.textContent = tag.type
-      xmlAudio.textContent = tag.audio
-      xmlDate.textContent = tag.date
-      root.appendChild(xmlTag)
-      xmlTag.appendChild(xmlType)
-      xmlTag.appendChild(xmlAudio)
-      xmlTag.appendChild(xmlDate)
+        var xmlTag = xmlDoc.createElement('tag')
+        var xmlType = xmlDoc.createElement('type')
+        var xmlAudio = xmlDoc.createElement('audio')
+        var xmlDate = xmlDoc.createElement('date')
+        xmlType.textContent = tag.type
+        xmlAudio.textContent = tag.audio
+        xmlDate.textContent = tag.date
+        root.appendChild(xmlTag)
+        xmlTag.appendChild(xmlType)
+        xmlTag.appendChild(xmlAudio)
+        xmlTag.appendChild(xmlDate)
     });
     var xml = new XMLSerializer().serializeToString(xmlDoc);
     var blob = new Blob([xml], {
-      type: "text/xml"
+        type: "text/xml"
     });
     var url = window.URL.createObjectURL(blob);
     document.getElementById('export').href = url;
-  }
-  
-  const exporter = (url) => {
+}
+
+const exporter = (url) => {
     window.open(url);
-  }
+}
