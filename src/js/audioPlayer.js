@@ -4,9 +4,8 @@ const playBtn = document.getElementById('play');
 const playBtnIndiv = document.getElementsByClassName('btn-play');
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
-
 const audio = document.getElementById('audio');
-const players = document.getElementById('players');
+const players = document.getElementById('player-list');
 const progress = document.getElementById('progress');
 const progressContainer = document.getElementById('progress-container');
 const title= document.getElementById('title');
@@ -30,9 +29,6 @@ function loadSong(song) {
 }
 
 function loadSongIndiv(song) {
-    const title_container = document.createElement("p");
-    title_container.innerText = song;
-    players.appendChild(title_container);
     audio.src = `../assets/audios/Q203-cat-Catalan/Millars/${song}.ogg`;
     array.forEach(tag => {
         tag.id = song
@@ -46,12 +42,16 @@ for (let i = 0; i < songs.length; i++) {
 
 function createPlayers(song, songIndex) {
     const newPlayer = document.createElement('audio');
+    const title_container = document.createElement("p");
+    title_container.innerText = song;
     newPlayer.id = 'audio' + songIndex;
     newPlayer.key = song;
     newPlayer.src = `../assets/audios/Q203-cat-Catalan/Millars/${song}.ogg`;
-    newPlayer.controls = "controls";
     loadSongIndiv(song);
-    players.appendChild(newPlayer);
+    const player_item = document.createElement("li");
+    players.appendChild(player_item);
+    player_item.appendChild(title_container);
+    player_item.appendChild(newPlayer);
     newPlayer.insertAdjacentHTML('afterend',
         '<div class="navigation"><button id="play' + songIndex + '" class="action-btn action-btn-big btn-play"><i class="fas fa-play"></i></button></div>');
 }
