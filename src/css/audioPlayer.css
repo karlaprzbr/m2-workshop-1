@@ -60,16 +60,32 @@ ul.tags{
   list-style: none;
   display:flex;
   flex-wrap: wrap;
-  justify-content: space-around;
 }
 
-ul.tags li button{
+ul.tags li button {
   width: fit-content;
   margin: 5px;
   border: 0;
   background-color: #A5C3FF;
   padding: 2px 10px;
   border-radius: 20px;
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  order: 3;
+}
+
+span {
+  width: fit-content;
+  height: min-content;
+  margin: 5px;
+  border: 0;
+  background-color: #A5C3FF;
+  padding: 2px 10px;
+  border-radius: 20px;
+  order: 3;
 }
 
 .xml-link{

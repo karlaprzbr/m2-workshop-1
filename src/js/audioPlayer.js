@@ -55,10 +55,12 @@ function createPlayers(song, songIndex) {
     newPlayer.src = `../assets/audios/Q203-cat-Catalan/Millars/${song}.ogg`;
     loadSongIndiv(song);
     const player_item = document.createElement("li");
-    player_item.className = song;
     players.appendChild(player_item);
     player_item.appendChild(title_container);
     player_item.appendChild(newPlayer);
+    const playerDiv = document.createElement('div');
+    playerDiv.className = 'tags-container '+song;
+    player_item.appendChild(playerDiv);
     newPlayer.insertAdjacentHTML('afterend',
         '<div class="navigation"><button id="play' + songIndex + '" class="action-btn action-btn-big btn-play"><i class="fas fa-play"></i></button></div>');
 }
@@ -189,6 +191,7 @@ document.getElementById('export').addEventListener('click', function () {
     exporter(url)
 })
 const createTagXml = (audioName, tagName) => {
+    actualTag = tagName.replace('tag ','')
     tagsList.forEach(tag => {
         if(tag.audio === audioName && tag.type === 'no-tag') {
             const tagId = tagsList.indexOf(tag)
@@ -202,12 +205,20 @@ const createTagXml = (audioName, tagName) => {
     }
     tagsList.push(tag)
     jsonToXml(tagsList);
+    let essai = true;
+    let liste = document.getElementsByClassName(actualTag)
+    const liste2 = Object.values(liste)
+        array.forEach(btn => {
+            if(btn.classList.contains(actualTag)) {
+                btn.disabled = true
+            }
+        });
     if(tagName != 'no-tag') {
-        const playerLi = document.getElementsByClassName(audioName)[0]/*.appendChild('span').innerHTML(tagName)*/
+        const tagsContainer = document.getElementsByClassName(audioName)[0]/*.appendChild('span').innerHTML(tagName)*/
         const playerSpan = document.createElement('span')
         playerSpan.innerHTML = tagName.replace('tag ','')
-        playerLi.appendChild(playerSpan)
-        console.log(playerLi)
+        tagsContainer.appendChild(playerSpan)
+        playerSpan.disabled = true
     }
 }
 
