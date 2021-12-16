@@ -17,6 +17,8 @@ const array = Object.values(tags)
 
 const songs = ["agroalimentari", "anxova", "blau acer", "blau de París"/*, "fuet", "mantega", "nata", "orxata", "sobrassada", "te", "tòfona", "tomàquet"*/];
 
+var tagsList = []
+
 let songIndex = 0;
 loadSong(songs[songIndex]);
 
@@ -36,11 +38,15 @@ function loadSongIndiv(song) {
 }
 
 for (let i = 0; i < songs.length; i++) {
-    console.log(songs[i] + i);
+    // console.log(songs[i] + i);
     createPlayers(songs[i], i);
 }
 
 function createPlayers(song, songIndex) {
+    if (tagsList.length > 0) {
+        let test = tagsList.find(tag => tag.audio == song);
+        console.log(test);
+    }
     const newPlayer = document.createElement('audio');
     const title_container = document.createElement("p");
     title_container.innerText = song;
@@ -49,6 +55,7 @@ function createPlayers(song, songIndex) {
     newPlayer.src = `../assets/audios/Q203-cat-Catalan/Millars/${song}.ogg`;
     loadSongIndiv(song);
     const player_item = document.createElement("li");
+    player_item.className = song;
     players.appendChild(player_item);
     player_item.appendChild(title_container);
     player_item.appendChild(newPlayer);
@@ -60,7 +67,7 @@ function createPlayers(song, songIndex) {
 
 for (let i = 0; i < playBtnIndiv.length; i++) {
     const audioId = document.getElementById('audio' + i);
-    console.log(audioId)
+    // console.log(audioId)
     playBtnIndiv[i].addEventListener('click', () => {
         const isPlaying = musicContainerId.classList.contains('play');
         if (isPlaying) {
@@ -129,9 +136,7 @@ function prevSong() {
 }
 
 function nextSong() {
-    let cpt = 0;
     let test = tagsList.find(tag => tag.audio == songs[songIndex])
-    console.log(test)
     if(test == undefined) {
         createTagXml(songs[songIndex],'no-tag');
     }
@@ -172,7 +177,7 @@ audio.addEventListener('ended', nextSong);
  * XML
  * Gestion des tags et création du fichier xml
  */
-var tagsList = []
+
 
 array.forEach(tag => {
     tag.addEventListener('click', function (event) {
@@ -197,6 +202,13 @@ const createTagXml = (audioName, tagName) => {
     }
     tagsList.push(tag)
     jsonToXml(tagsList);
+    if(tagName != 'no-tag') {
+        const playerLi = document.getElementsByClassName(audioName)[0]/*.appendChild('span').innerHTML(tagName)*/
+        const playerSpan = document.createElement('span')
+        playerSpan.innerHTML = tagName.replace('tag ','')
+        playerLi.appendChild(playerSpan)
+        console.log(playerLi)
+    }
 }
 
 const jsonToXml = (list) => {
