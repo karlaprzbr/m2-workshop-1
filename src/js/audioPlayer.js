@@ -129,6 +129,13 @@ function prevSong() {
 }
 
 function nextSong() {
+    let cpt = 0;
+    let test = tagsList.find(tag => tag.audio == songs[songIndex])
+    console.log(test)
+    if(test == undefined) {
+        createTagXml(songs[songIndex],'no-tag');
+    }
+
     songIndex++;
 
     if (songIndex > songs.length - 1) {
@@ -166,8 +173,7 @@ audio.addEventListener('ended', nextSong);
  * Gestion des tags et création du fichier xml
  */
 var tagsList = []
-// const tags = document.getElementsByClassName('tag')
-// const array = Object.values(tags)
+
 array.forEach(tag => {
     tag.addEventListener('click', function (event) {
         createTagXml(tag.id, tag.className)
@@ -178,6 +184,12 @@ document.getElementById('export').addEventListener('click', function () {
     exporter(url)
 })
 const createTagXml = (audioName, tagName) => {
+    tagsList.forEach(tag => {
+        if(tag.audio === audioName && tag.type === 'no-tag') {
+            const tagId = tagsList.indexOf(tag)
+            tagsList.splice(tagId,1)
+        }
+    });
     var tag = {
         'audio': audioName,
         'type': tagName.replace('tag ', ''),
