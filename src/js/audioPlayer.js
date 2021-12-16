@@ -73,7 +73,9 @@ for (let i = 0; i < playBtnIndiv.length; i++) {
         playBtnIndiv[i].querySelector('i.fas').classList.remove('fa-pause');
     })
 
-    
+    playBtnIndiv[i].addEventListener('dblclick', () =>{
+        
+    })
 }
 
 
