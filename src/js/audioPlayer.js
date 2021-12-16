@@ -9,7 +9,7 @@ const audio = document.getElementById('audio');
 const players = document.getElementById('players');
 const progress = document.getElementById('progress');
 const progressContainer = document.getElementById('progress-container');
-const title = document.getElementById('title');
+const title= document.getElementById('title');
 const currTime = document.querySelector('#currTime');
 const durTime = document.querySelector('#durTime');
 
@@ -29,6 +29,16 @@ function loadSong(song) {
     });
 }
 
+function loadSongIndiv(song) {
+    const title_container = document.createElement("p");
+    title_container.innerText = song;
+    players.appendChild(title_container);
+    audio.src = `../assets/audios/Q203-cat-Catalan/Millars/${song}.ogg`;
+    array.forEach(tag => {
+        tag.id = song
+    });
+}
+
 for (let i = 0; i < songs.length; i++) {
     console.log(songs[i] + i);
     createPlayers(songs[i], i);
@@ -40,7 +50,7 @@ function createPlayers(song, songIndex) {
     newPlayer.key = song;
     newPlayer.src = `../assets/audios/Q203-cat-Catalan/Millars/${song}.ogg`;
     newPlayer.controls = "controls";
-    loadSong(song);
+    loadSongIndiv(song);
     players.appendChild(newPlayer);
     newPlayer.insertAdjacentHTML('afterend',
         '<div class="navigation"><button id="play' + songIndex + '" class="action-btn action-btn-big btn-play"><i class="fas fa-play"></i></button></div>');
