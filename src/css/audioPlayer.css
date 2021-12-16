@@ -26,7 +26,6 @@ body {
   display: flex;
   padding: 20px 30px;
   position: relative;
-  margin: 100px 0;
   z-index: 10;
 }
 
