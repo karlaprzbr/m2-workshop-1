@@ -2,3 +2,101 @@ html body{
   font-family: 'Lato', sans-serif;
   background-color: #F8F9FA;
 }
+
+.music-list-container ul{
+  list-style: none;
+}
+
+ul#player-list li{
+  display:flex;
+  margin: 15px;
+  padding: 10px;
+  border-radius: 12px;
+  
+  background-color: #fff;
+  box-shadow: 0 8px 20px 0 rgba(0,0,0, 0.17);
+}
+
+ul#player-list li p{
+  order: 2;
+  font-family: 'LatoBold', sans-serif;
+  font-size: 18px;
+  margin-left: 15px;
+
+  text-transform: capitalize;
+}
+
+ul#player-list li div.navigation,
+ul#tags li div.navigation,
+div.music-container .controls-music div.navigation{
+  background-color: #EBF3FF;
+  border-radius: 50px;
+}
+
+#player-list li button.action-btn.btn-play,
+div.music-container .controls-music button#play.action-btn,
+div.music-container .controls-music button#prev.action-btn,
+div.music-container .controls-music button#next.action-btn{
+  border: 0;
+  background-color: #3366CC;
+  border-radius: 50px;
+  margin: 5px;
+  padding: 10px 18px;
+  font-size: 24px;
+}
+
+ul#player-list li i,
+div.music-container .controls-music button.action-btn i.fas{
+  color: #FFF;
+}
+
+/* LECTEUR CONTINU */
+.music-container.col-sm-12{
+  background-color: #FFF;
+  padding: 10px;
+}
+
+ul.tags{
+  list-style: none;
+  display:flex;
+  flex-wrap: wrap;
+}
+
+ul.tags li button{
+  width: fit-content;
+  margin: 5px;
+
+  border: 0;
+  background-color: #A5C3FF;
+  padding: 2px 10px;
+  border-radius: 20px;
+}
+
+.xml-link{
+  display: block;
+  text-align: center;
+
+  text-decoration: none;
+  background-color: #3366CC;
+  border-radius: 12px;
+  color: #FFF;
+}
+
+.xml-link:hover{
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+div.music-info.col-sm-4,
+div.music-container .col-sm-4{
+  display: flex;
+  align-items: center;
+}
+div.music-container .col-sm-4{
+  justify-content: center;
+}
+
+div.music-info.col-sm-4 h4{
+  text-transform: capitalize;
+}

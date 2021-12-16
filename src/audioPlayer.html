@@ -19,51 +19,62 @@
 <body>
   <header id="audio-navbar"></header>
 
-  <!-- LECTURE INDIVIDUELLE LISTE-->
-  <div class="music-container" id="music-container-id">
-    <div id="players-container">
-      <ul id="player-list"></ul>
+  <div class="container col-sm-12">
+    <div class="row">
+
+      <div class="form col-sm-6"> POUETE </div>
+
+    <!-- LECTURE INDIVIDUELLE LISTE-->
+      <div class="music-list-container col-sm-6" id="music-container-id">
+        <div id="players-container">
+          <ul id="player-list"></ul>
+        </div>
+      </div>
+
     </div>
   </div>
 
   <!-- LECTURE CONTINUE -->
-  <div class="music-container" id="music-container">
+  <div class="music-container col-sm-12 fixed-bottom" id="music-container">
+    <div class="row">
+      <div class="music-info col-sm-4">
 
-    <div class="music-info">
+        <h4 id="title"></h4>
+        
+        <!--<div class="progress-container" id="progress-container">
+          <div class="progress" id="progress"></div>
+        </div>-->
+      </div>
 
-      <h4 id="title"></h4>
-      
-      <div class="progress-container" id="progress-container">
-        <div class="progress" id="progress"></div>
+      <div class="controls-music col-sm-4">
+        <audio src="" id="audio"></audio>
+
+        <div class="navigation">
+          <button id="prev" class="action-btn">
+            <i class="fas fa-backward"></i>
+          </button>
+
+          <button id="play" class="action-btn action-btn-big">
+            <i class="fas fa-play"></i>
+          </button>
+
+          <button id="next" class="action-btn">
+            <i class="fas fa-forward"></i>
+          </button>
+        </div>
+      </div>
+      <div class="tags-container col-sm-4">
+        <ul class="tags">
+          <li class="tag-item"><button class="tag no-match-language">no match language</button></li>
+          <li class="tag-item"><button class="tag parasite">parasite</button></li>
+          <li class="tag-item"><button class="tag cut-word">cut word</button></li>
+          <li class="tag-item"><button class="tag no-match-spelling">no match spelling</button></li>
+          <li class="tag-item"><button class="tag no-sound">no sound</button></li>
+          <li class="tag-item"><button class="tag vandalisme">vandalism</button> </li>
+        </ul>
+        <a class="xml-link" id="export">Export to XML</a>
       </div>
     </div>
-
-    <audio src="" id="audio"></audio>
-
-    <div class="navigation">
-      <button id="prev" class="action-btn">
-        <i class="fas fa-backward"></i>
-      </button>
-
-      <button id="play" class="action-btn action-btn-big">
-        <i class="fas fa-play"></i>
-      </button>
-
-      <button id="next" class="action-btn">
-        <i class="fas fa-forward"></i>
-      </button>
-    </div>
-
-    <ul class="tags">
-      <li class="tag-item"><button class="tag no-match-language">no match language</button></li>
-      <li class="tag-item"><button class="tag parasite">parasite</button></li>
-      <li class="tag-item"><button class="tag cut-word">cut word</button></li>
-      <li class="tag-item"><button class="tag no-match-spelling">no match spelling</button></li>
-      <li class="tag-item"><button class="tag no-sound">no sound</button></li>
-      <li class="tag-item"><button class="tag vandalisme">vandalism</button> </li>
-      <a class="btn btn-primary" id="export">export xml</a>
-    </ul>
-
   </div>
 
 
