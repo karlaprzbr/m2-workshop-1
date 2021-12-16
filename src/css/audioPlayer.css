@@ -60,12 +60,12 @@ ul.tags{
   list-style: none;
   display:flex;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 ul.tags li button{
   width: fit-content;
   margin: 5px;
-
   border: 0;
   background-color: #A5C3FF;
   padding: 2px 10px;
@@ -75,7 +75,8 @@ ul.tags li button{
 .xml-link{
   display: block;
   text-align: center;
-
+  width: 75%;
+  padding: 10px;
   text-decoration: none;
   background-color: #3366CC;
   border-radius: 12px;
@@ -95,6 +96,11 @@ div.music-container .col-sm-4{
 }
 div.music-container .col-sm-4{
   justify-content: center;
+}
+
+div.tags-container.col-sm-4{
+    display: flex;
+    flex-direction: column;
 }
 
 div.music-info.col-sm-4 h4{
