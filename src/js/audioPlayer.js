@@ -31,7 +31,6 @@ function loadSong(song) {
 }
 
 function loadSongIndiv(song) {
-    audio.src = `../assets/audios/Q203-cat-Catalan/Millars/${song}.ogg`;
     array.forEach(tag => {
         tag.id = song
     });
