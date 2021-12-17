@@ -1,5 +1,5 @@
 # Workshop pour Wikimédia
-Ce projet permet aux contributeurs d'écouter sans interruption et de gérer les tags des enregistrements audios sur la plateforme Lingua Libre.
+Ce projet permet aux contributeurs de Lingua Libre d'écouter sans interruption les différents audios contribuer et de d'ajouter des tags lorsque les sons ne fonctionnent pas correctement.
 
 ## Technologies utilisées :
 
